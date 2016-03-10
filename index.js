@@ -19,6 +19,7 @@ var Sign = function (configuration) {
   this.region = configuration.region;
   this.secretAccessKey = configuration.secretAccessKey;
   this.url = configuration.url;
+  this.serviceNameOverride = configuration.serviceNameOverride
 };
 
 /**
@@ -145,7 +146,7 @@ Sign.prototype._getRegion = function () {
  * @return {string}
  */
 Sign.prototype._getService = function () {
-  return url.parse(this.url).host.split('.', 2)[0];
+  return this.serviceNameOverride?this.serviceNameOverride : url.parse(this.url).host.split('.', 2)[0];
 };
 
 /**
