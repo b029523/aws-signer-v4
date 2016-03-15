@@ -20,6 +20,12 @@ var Sign = function (configuration) {
   this.secretAccessKey = configuration.secretAccessKey;
   this.url = configuration.url;
   this.serviceNameOverride = configuration.serviceNameOverride
+  this.sessionToken = configuration.sessionToken
+  
+  if(this.sessionToken) {
+    this.headers['x-amz-security-token']= this.sessionToken;
+  }
+  
 };
 
 /**
